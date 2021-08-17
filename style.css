@@ -1,0 +1,33 @@
+#controls_container {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 8vw;
+  background-color: rgb(40, 60, 243);
+}
+
+#sorting_display {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 30vw;
+  background-color: rgb(74, 243, 40);
+}
+
+.bar {
+  position: absolute;
+  width: 5%;
+  border-radius: 5px;
+  bottom: 0;
+  transition: all 0.25s;
+  background-color: rgb(98, 81, 245);
+}
+
+#test_button {
+  height: 50px;
+  width: 100px;
+}
