@@ -5,7 +5,8 @@
   margin-right: auto;
   width: 50%;
   height: 8vw;
-  background-color: rgb(40, 60, 243);
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px 5px 0 0;
 }
 
 #sorting_display {
@@ -15,19 +16,16 @@
   margin-right: auto;
   width: 50%;
   height: 30vw;
-  background-color: rgb(74, 243, 40);
+  background-color: rgb(255, 255, 255);
+  border-radius: 0 0 5px 5px;
 }
 
 .bar {
   position: absolute;
-  width: 5%;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
   bottom: 0;
   transition: all 0.25s;
-  background-color: rgb(98, 81, 245);
-}
-
-#test_button {
-  height: 50px;
-  width: 100px;
+  background-color: rgb(0, 89, 255);
+  opacity: 0.8;
+  box-shadow: 1px 1px 3px 0.5px rgb(107, 107, 107);
 }

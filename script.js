@@ -1,7 +1,7 @@
 const sortingDisplay = document.getElementById("sorting_display");
-let valuesToSort = [
-  60, 1, 45, 36, 100, 61, 55, 2, 42, 27, 3, 67, 46, 5, 66, 10, 92,
-];
+let valuesToSort = [];
+let valuesArrSize = 20;
+let sortSpeed = 100;
 let leftPosition = 0;
 let currentIndex = 0;
 let nextIndex = 1;
@@ -13,20 +13,25 @@ let valueBar,
   oldValueNext;
 let sortingOccurred = false;
 
+// Generate random array
+for (let i = 0; i <= valuesArrSize; i++) {
+  valuesToSort.push(Math.ceil(Math.random() * 99));
+}
+
+// Elements are created from array - later to be cleared and re-ran when array changes
 valuesToSort.forEach((value, index) => {
   const valueHTML = `<div id="${index}" class="bar">${value}</div>`;
   sortingDisplay.insertAdjacentHTML("beforeend", valueHTML);
   const valueBar = document.getElementById(index);
   valueBar.style.height = `${value}%`;
   valueBar.style.left = `${leftPosition}%`;
-  leftPosition += 6;
+  valueBar.style.width = `${100 / valuesArrSize - 0.8}%`;
+  leftPosition += 100 / valuesToSort.length;
 });
 
 const compareTwoValues = function () {
   console.log("-----------");
-  if (valueBar)
-    valueBar.style.backgroundColor = valueBarNext.style.backgroundColor =
-      "blue";
+  if (valueBar) valueBar.style.opacity = valueBarNext.style.opacity = "0.8";
   if (currentIndex !== valuesToSort.length - 1) {
     valueBar = document.getElementById(currentIndex);
     valueBarNext = document.getElementById(nextIndex);
@@ -37,8 +42,7 @@ const compareTwoValues = function () {
     oldValue = valuesToSort[currentIndex];
     oldValueNext = valuesToSort[nextIndex];
 
-    valueBar.style.backgroundColor = valueBarNext.style.backgroundColor =
-      "white";
+    valueBar.style.opacity = valueBarNext.style.opacity = "0.5";
     if (oldValue > oldValueNext) {
       sortingOccurred = true;
 
@@ -63,12 +67,28 @@ const compareTwoValues = function () {
     if (sortingOccurred) {
       sortingOccurred = false;
       beginSorting();
+    } else {
+      console.log("SORTED!");
+      document
+        .getElementById("sort_button")
+        .addEventListener("click", beginSorting);
     }
   }
 };
-
+let sortTimeout;
 const beginSorting = function () {
-  setTimeout(compareTwoValues, 80);
+  document
+    .getElementById("sort_button")
+    .removeEventListener("click", beginSorting);
+  sortTimeout = setTimeout(compareTwoValues, sortSpeed);
 };
 
-document.getElementById("test_button").addEventListener("click", beginSorting);
+const pauseSorting = function () {
+  clearTimeout(sortTimeout);
+  document
+    .getElementById("sort_button")
+    .addEventListener("click", beginSorting);
+};
+
+document.getElementById("sort_button").addEventListener("click", beginSorting);
+document.getElementById("pause_button").addEventListener("click", pauseSorting);
