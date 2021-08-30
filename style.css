@@ -1,11 +1,11 @@
 body {
-  font-family: 'Alumni Sans', sans-serif;
+  font-family: "Alumni Sans", sans-serif;
 }
 
 select {
   border-radius: 3px;
   font-size: 2vw;
-  font-family: 'Alumni Sans', sans-serif;
+  font-family: "Alumni Sans", sans-serif;
   border: none;
   box-shadow: 1px 1px 2px 0.5px rgb(107, 107, 107);
 }
@@ -14,7 +14,7 @@ select {
   float: right;
   width: 10%;
 }
-#size_options_container select{
+#size_options_container select {
   width: 100%;
 }
 
@@ -22,15 +22,7 @@ select {
   float: right;
   width: 20%;
 }
-#speed_options_container select{
-  width: 100%;
-}
-
-#algorithm_options_container {
-  float: right;
-  width: 20%;
-}
-#algorithm_options_container select{
+#speed_options_container select {
   width: 100%;
 }
 
@@ -64,7 +56,7 @@ select {
   position: absolute;
   border-radius: 5px 5px 0 0;
   bottom: 0;
-  transition: all .5s;
+  transition: all 0.5s;
   background-color: rgb(0, 89, 255);
   opacity: 0.8;
   box-shadow: 1px 1px 3px 0.5px rgb(107, 107, 107);
@@ -76,9 +68,9 @@ select {
   padding: 5px;
   font-size: 2vw;
   background-color: rgb(0, 89, 255);
-  opacity: .5;
+  opacity: 0.5;
   border-radius: 5px;
-  transition: opacity .8s;
+  transition: opacity 0.8s;
   float: left;
   text-align: center;
   margin-right: 2%;
@@ -86,6 +78,6 @@ select {
 }
 
 .btn:hover {
-  opacity: .9;
+  opacity: 0.9;
   cursor: pointer;
 }

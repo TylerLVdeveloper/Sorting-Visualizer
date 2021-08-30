@@ -3,7 +3,6 @@ const sortingDisplay = document.getElementById("sorting_display");
 const sortBtn = document.getElementById("sort_button");
 const pauseBtn = document.getElementById("pause_button");
 const shuffleBtn = document.getElementById("shuffle_button");
-const algorithmBtn = document.getElementById("algorithm_button");
 const sizeOptions = document.getElementById("size_options");
 const speedOptions = document.getElementById("speed_options");
 
@@ -22,61 +21,59 @@ let valueBar,
   oldValueNext;
 let sortingOccurred = false;
 
-const generateNewValues = function(){
-// Clear array
-valuesToSort = [];
-// Clear bars
-sortingDisplay.innerHTML = '';
-// Generate random array
-for (let i = 0; i <= valuesArrSize; i++) {
-  valuesToSort.push(Math.ceil(Math.random() * 99));
-}
-leftPosition = 0;
-// Elements are created from array - later to be cleared and re-ran when array changes
-valuesToSort.forEach((value, index) => {
-  const valueHTML = `<div id="${index}" class="bar"></div>`;
-  sortingDisplay.insertAdjacentHTML("beforeend", valueHTML);
-  const valueBar = document.getElementById(index);
-  valueBar.style.height = `${value}%`;
-  valueBar.style.left = `${leftPosition}%`;
-  valueBar.style.width = `${100 / valuesArrSize - barGap}%`;
-  leftPosition += 100 / valuesToSort.length;
-});
-// Reset for value comparison 
-currentIndex = 0;
-nextIndex = 1;
-setSpeed();
-}
+const generateNewValues = function () {
+  // Clear array
+  valuesToSort = [];
+  // Clear bars
+  sortingDisplay.innerHTML = "";
+  // Generate random array
+  for (let i = 0; i <= valuesArrSize; i++) {
+    valuesToSort.push(Math.ceil(Math.random() * 99));
+  }
+  leftPosition = 0;
+  // Elements are created from array - later to be cleared and re-ran when array changes
+  valuesToSort.forEach((value, index) => {
+    const valueHTML = `<div id="${index}" class="bar"></div>`;
+    sortingDisplay.insertAdjacentHTML("beforeend", valueHTML);
+    const valueBar = document.getElementById(index);
+    valueBar.style.height = `${value}%`;
+    valueBar.style.left = `${leftPosition}%`;
+    valueBar.style.width = `${100 / valuesArrSize - barGap}%`;
+    leftPosition += 100 / valuesToSort.length;
+  });
+  // Reset for value comparison
+  currentIndex = 0;
+  nextIndex = 1;
+  setSpeed();
+};
 
-const setSize = function() {
-  const barClass = document.querySelectorAll(".bar");
-
-  if(sizeOptions.value > 50) barGap = 0.8;
-  if(sizeOptions.value < 50) barGap = 1;
-  if(sizeOptions.value < 20) barGap = 2;
-  if(sizeOptions.value < 10) barGap = 5;
+const setSize = function () {
+  if (sizeOptions.value > 50) barGap = 0.8;
+  if (sizeOptions.value < 50) barGap = 1;
+  if (sizeOptions.value < 20) barGap = 2;
+  if (sizeOptions.value < 10) barGap = 5;
 
   valuesArrSize = sizeOptions.value;
   generateNewValues();
   setSpeed();
-}
+};
 
-const setSpeed = function() {
+const setSpeed = function () {
   const barClass = document.querySelectorAll(".bar");
 
-  if(speedOptions.value === "slow"){
+  if (speedOptions.value === "slow") {
     sortSpeed = 1000;
-    barClass.forEach(bar=>bar.style.transition = "all 1s");
+    barClass.forEach((bar) => (bar.style.transition = "all 1s"));
   }
-  if(speedOptions.value === "medium"){
+  if (speedOptions.value === "medium") {
     sortSpeed = 10;
-    barClass.forEach(bar=>bar.style.transition = "all 0.5s");
+    barClass.forEach((bar) => (bar.style.transition = "all 0.5s"));
   }
-  if(speedOptions.value === "fast"){
+  if (speedOptions.value === "fast") {
     sortSpeed = 1;
-    barClass.forEach(bar=>bar.style.transition = "all 0.25s");
+    barClass.forEach((bar) => (bar.style.transition = "all 0.25s"));
   }
-}
+};
 
 const compareTwoValues = function () {
   console.log("-----------");
@@ -118,8 +115,7 @@ const compareTwoValues = function () {
       beginSorting();
     } else {
       console.log("SORTED!");
-      sortBtn
-        .addEventListener("click", beginSorting);
+      sortBtn.addEventListener("click", beginSorting);
     }
   }
 };
@@ -137,7 +133,6 @@ const pauseSorting = function () {
 generateNewValues();
 sortBtn.addEventListener("click", beginSorting);
 pauseBtn.addEventListener("click", pauseSorting);
-shuffleBtn.addEventListener('click', generateNewValues);
-sizeOptions.addEventListener('change', setSize);
-speedOptions.addEventListener('change', setSpeed);
-
+shuffleBtn.addEventListener("click", generateNewValues);
+sizeOptions.addEventListener("change", setSize);
+speedOptions.addEventListener("change", setSpeed);
