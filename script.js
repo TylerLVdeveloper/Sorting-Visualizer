@@ -62,16 +62,16 @@ const setSpeed = function () {
   const barClass = document.querySelectorAll(".bar");
 
   if (speedOptions.value === "slow") {
-    sortSpeed = 1000;
-    barClass.forEach((bar) => (bar.style.transition = "all 1s"));
+    sortSpeed = 200;
+    barClass.forEach((bar) => (bar.style.transition = "all .5s"));
   }
   if (speedOptions.value === "medium") {
-    sortSpeed = 10;
-    barClass.forEach((bar) => (bar.style.transition = "all 0.5s"));
+    sortSpeed = 110;
+    barClass.forEach((bar) => (bar.style.transition = "all 0.25s"));
   }
   if (speedOptions.value === "fast") {
     sortSpeed = 1;
-    barClass.forEach((bar) => (bar.style.transition = "all 0.25s"));
+    barClass.forEach((bar) => (bar.style.transition = "all 0.1s"));
   }
 };
 
