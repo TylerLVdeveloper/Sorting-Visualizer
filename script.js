@@ -48,7 +48,7 @@ const generateNewValues = function () {
 };
 
 const setSize = function () {
-  if (sizeOptions.value > 50) barGap = 0.8;
+  if (sizeOptions.value >= 50) barGap = 0.8;
   if (sizeOptions.value < 50) barGap = 1;
   if (sizeOptions.value < 20) barGap = 2;
   if (sizeOptions.value < 10) barGap = 5;
