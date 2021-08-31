@@ -81,3 +81,34 @@ select {
   opacity: 0.9;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+  #controls_container {
+    width: 100%;
+    height: 30vw;
+  }
+
+  #sorting_display {
+    width: 100%;
+    height: 100vw;
+  }
+
+  select {
+    font-size: 8vw;
+  }
+
+  #size_options_container {
+    width: 15%;
+  }
+
+  #speed_options_container {
+    width: 25%;
+  }
+
+  .btn {
+    padding: 5px;
+    font-size: 7vw;
+    opacity: 0.7;
+    margin-right: 2%;
+  }
+}
