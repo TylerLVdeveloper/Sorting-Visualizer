@@ -94,11 +94,11 @@ select {
   }
 
   select {
-    font-size: 8vw;
+    font-size: 6vw;
   }
 
   #size_options_container {
-    width: 15%;
+    width: 18%;
   }
 
   #speed_options_container {
